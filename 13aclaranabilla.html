@@ -5,12 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GUI Sederhana</title>
 <style>
-  /* Container untuk object agar bisa scroll jika konten lebih tinggi */
   .object-container {
-    width: 400px;       /* Lebar container */
-    height: 250px;      /* Tinggi container */
+    width: 400px;
+    height: 200px;
     border: 1px solid #000;
-    overflow: auto;     /* Scroll vertikal muncul jika konten lebih tinggi */
+    overflow: auto; /* scroll muncul jika konten lebih besar */
   }
 </style>
 </head>
@@ -45,8 +44,16 @@
 
 <h2>Contoh Object</h2>
 <div class="object-container">
-  <object data="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
-          type="application/pdf" width="380" height="600">
+  <object type="text/html" data="data:text/html,
+    <html><body>
+    <h3>Contoh Dokumen</h3>
+    <p>Ini adalah contoh teks panjang di dalam object.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p>Phasellus iaculis neque purus sodales bibendum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+    <p>Aliquam erat volutpat. Cras in purus eu magna vulputate luctus.</p>
+    <p>Praesent venenatis metus at tortor pulvinar varius.</p>
+    <p>Scroll ke bawah untuk melihat lebih banyak teks.</p>
+    </body></html>">
   </object>
 </div>
 
