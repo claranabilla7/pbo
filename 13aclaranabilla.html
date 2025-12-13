@@ -9,7 +9,10 @@
     width: 400px;
     height: 200px;
     border: 1px solid #000;
-    overflow: auto; /* scroll muncul jika konten lebih besar */
+    overflow: auto; /* scroll muncul jika konten lebih tinggi */
+  }
+  .object-content {
+    width: 380px;
   }
 </style>
 </head>
@@ -44,17 +47,17 @@
 
 <h2>Contoh Object</h2>
 <div class="object-container">
-  <object type="text/html" data="data:text/html,
-    <html><body>
+  <!-- Menggunakan iframe agar konten scrollable pasti tampil -->
+  <iframe class="object-content" srcdoc="
     <h3>Contoh Dokumen</h3>
-    <p>Ini adalah contoh teks panjang di dalam object.</p>
+    <p>Ini adalah contoh teks panjang di dalam object/iframe.</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <p>Phasellus iaculis neque purus sodales bibendum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
     <p>Aliquam erat volutpat. Cras in purus eu magna vulputate luctus.</p>
     <p>Praesent venenatis metus at tortor pulvinar varius.</p>
     <p>Scroll ke bawah untuk melihat lebih banyak teks.</p>
-    </body></html>">
-  </object>
+    <p>Tambahkan lebih banyak teks untuk demo scroll vertical.</p>
+  " width="380" height="600" style="border:none;"></iframe>
 </div>
 
 <h2>Form Input</h2>
