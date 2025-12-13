@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GUI Sederhana</title>
+<style>
+  /* Container untuk object agar bisa scroll jika konten lebih tinggi */
+  .object-container {
+    width: 400px;       /* Lebar container */
+    height: 250px;      /* Tinggi container */
+    border: 1px solid #000;
+    overflow: auto;     /* Scroll vertikal muncul jika konten lebih tinggi */
+  }
+</style>
 </head>
 <body>
 
@@ -35,9 +44,11 @@
 <img src="https://picsum.photos/400/200" alt="Gambar Bebas" width="400" height="200">
 
 <h2>Contoh Object</h2>
-<object data="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
-        type="application/pdf" width="400" height="250" style="border:1px solid #000;">
-</object>
+<div class="object-container">
+  <object data="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
+          type="application/pdf" width="380" height="600">
+  </object>
+</div>
 
 <h2>Form Input</h2>
 <form onsubmit="tambahData(); return false;">
@@ -69,5 +80,6 @@ function tambahData() {
   document.getElementById("nim").value = "";
 }
 </script>
+
 </body>
 </html>
