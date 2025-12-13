@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<h1 id="title">Halo, Mahasiswa!</h1>
+<h1>Halo, Mahasiswa!</h1>
 
 <h2>Informasi Mahasiswa</h2>
 <p>Contoh tampilan data sederhana menggunakan HTML.</p>
@@ -31,8 +31,8 @@
 </tr>
 </table>
 
-<h2>Gambar Pemandangan</h2>
-<img src="https://picsum.photos/400/250" alt="Pemandangan Alam">
+<h2>Gambar</h2>
+<img src="https://picsum.photos/400/200" alt="Gambar Contoh">
 
 <h2>Form Input</h2>
 <form onsubmit="tambahData(); return false;">
@@ -46,7 +46,7 @@
 </form>
 
 <script>
-let no = 3; // lanjut dari data awal
+let no = 3; // Lanjut dari data awal
 
 function tambahData() {
   let nama = document.getElementById("nama").value;
@@ -59,11 +59,10 @@ function tambahData() {
   baris.insertCell(1).innerText = nama;
   baris.insertCell(2).innerText = nim;
 
-  // kosongkan input setelah kirim
+  // Kosongkan input setelah dikirim
   document.getElementById("nama").value = "";
   document.getElementById("nim").value = "";
 }
 </script>
-
 </body>
 </html>
