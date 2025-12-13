@@ -8,7 +8,42 @@
 <body>
 <h1 id="title">Halo, Mahasiswa!</h1>
 <button onclick="ubahTeks()">Klik Saya</button>
+  
+<p id="paragraf">
+Selamat datang di halaman interaktif ini! Gunakan tombol di atas untuk melihat bagaimana teks dapat berubah secara dinamis menggunakan JavaScript.
+</p>
+<table border="1">
+  <tr>
+    <th>Nama</th>
+    <th>NIM</th>
+    <th>Prodi</th>
+  </tr>
+  <tr>
+    <td>Alice</td>
+    <td>12345</td>
+    <td>Informatika</td>
+  </tr>
+  <tr>
+    <td>Bob</td>
+    <td>67890</td>
+    <td>Sistem Informasi</td>
+  </tr>
+</table>
+
+<img src="tips memilih jurusan.jpg" alt="Tips Memilih Jurusan" width="320" height="240">
+
+<!-- Form input sederhana -->
+<form id="formContoh">
+  <label for="nama">Nama:</label>
+  <input type="text" id="nama" name="nama">
+  <input type="submit" value="Kirim">
+</form>
+
 <script>
 function ubahTeks() {
-document.getElementById("title").innerText = "Teks telah berubah!";
-} </script> </body> </html>
+  document.getElementById("title").innerText = "Teks telah berubah!";
+  document.getElementById("paragraf").innerText = "Selamat! Kamu sudah berhasil mengubah teks di halaman ini. Semoga bermanfaat untuk latihan GUI sederhana.";
+}
+</script>
+</body>
+</html>
