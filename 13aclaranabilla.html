@@ -8,10 +8,9 @@
 <body>
 
 <h1 id="title">Halo, Mahasiswa!</h1>
-<button>Proses</button>
 
 <h2>Informasi Mahasiswa</h2>
-<p>Contoh input data dan tabel sederhana.</p>
+<p>Contoh tampilan data sederhana menggunakan HTML.</p>
 
 <h2>Tabel Data</h2>
 <table border="1" cellpadding="6" id="tabelMahasiswa">
@@ -20,10 +19,20 @@
   <th>Nama</th>
   <th>NIM</th>
 </tr>
+<tr>
+  <td>1</td>
+  <td>Andi Pratama</td>
+  <td>231001</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>Siti Aisyah</td>
+  <td>231002</td>
+</tr>
 </table>
 
 <h2>Gambar Pemandangan</h2>
-<img src="https://picsum.photos/400/200" alt="Pemandangan">
+<img src="https://picsum.photos/400/250" alt="Pemandangan Alam">
 
 <h2>Form Input</h2>
 <form onsubmit="tambahData(); return false;">
@@ -33,23 +42,24 @@
 <label>NIM:</label><br>
 <input type="text" id="nim" required><br><br>
 
-<input type="submit" value="Tambah ke Tabel">
+<input type="submit" value="Kirim">
 </form>
 
 <script>
-let no = 1;
+let no = 3; // lanjut dari data awal
 
 function tambahData() {
   let nama = document.getElementById("nama").value;
   let nim = document.getElementById("nim").value;
 
   let tabel = document.getElementById("tabelMahasiswa");
-  let row = tabel.insertRow();
+  let baris = tabel.insertRow();
 
-  row.insertCell(0).innerText = no++;
-  row.insertCell(1).innerText = nama;
-  row.insertCell(2).innerText = nim;
+  baris.insertCell(0).innerText = no++;
+  baris.insertCell(1).innerText = nama;
+  baris.insertCell(2).innerText = nim;
 
+  // kosongkan input setelah kirim
   document.getElementById("nama").value = "";
   document.getElementById("nim").value = "";
 }
