@@ -11,46 +11,47 @@
 <button>Proses</button>
 
 <h2>Informasi Mahasiswa</h2>
-<p>Contoh tampilan data sederhana menggunakan HTML.</p>
+<p>Contoh input data dan tabel sederhana.</p>
 
 <h2>Tabel Data</h2>
-<table border="1" cellpadding="6">
+<table border="1" cellpadding="6" id="tabelMahasiswa">
 <tr>
   <th>No</th>
   <th>Nama</th>
   <th>NIM</th>
 </tr>
-<tr>
-  <td>1</td>
-  <td>Andi Pratama</td>
-  <td>231001</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td>Siti Aisyah</td>
-  <td>231002</td>
-</tr>
 </table>
 
-<h2>Object</h2>
-<object width="300" height="150" data="data:text/plain,Contoh Object">
-  Object tidak dapat ditampilkan
-</object>
+<h2>Gambar Pemandangan</h2>
+<img src="https://picsum.photos/400/200" alt="Pemandangan">
 
 <h2>Form Input</h2>
-<form>
+<form onsubmit="tambahData(); return false;">
 <label>Nama:</label><br>
-<input type="text" value="Budi"><br><br>
+<input type="text" id="nama" required><br><br>
 
 <label>NIM:</label><br>
-<input type="text" value="231003"><br><br>
+<input type="text" id="nim" required><br><br>
 
-<input type="submit" value="Kirim">
+<input type="submit" value="Tambah ke Tabel">
 </form>
 
 <script>
-function ubahTeks() {
-document.getElementById("title").innerText = "Halo Mahasiswa";
+let no = 1;
+
+function tambahData() {
+  let nama = document.getElementById("nama").value;
+  let nim = document.getElementById("nim").value;
+
+  let tabel = document.getElementById("tabelMahasiswa");
+  let row = tabel.insertRow();
+
+  row.insertCell(0).innerText = no++;
+  row.insertCell(1).innerText = nama;
+  row.insertCell(2).innerText = nim;
+
+  document.getElementById("nama").value = "";
+  document.getElementById("nim").value = "";
 }
 </script>
 
