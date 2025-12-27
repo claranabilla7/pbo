@@ -14,8 +14,8 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background: 
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
         url("https://images.unsplash.com/photo-1521791136064-7986c2920216");
     background-size: cover;
     background-position: center;
@@ -25,12 +25,12 @@ body {
     padding: 15px;
 }
 
-/* Card */
+/* CARD */
 .card {
     width: 100%;
     max-width: 360px;
     padding: 25px;
-    border-radius: 15px;
+    border-radius: 16px;
     background: rgba(255, 255, 255, 0.18);
     backdrop-filter: blur(12px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
@@ -40,7 +40,6 @@ body {
 
 h2 {
     margin-bottom: 20px;
-    font-size: 22px;
 }
 
 input {
@@ -53,6 +52,7 @@ input {
     font-size: 14px;
 }
 
+/* BUTTON */
 .btn-login {
     width: 100%;
     padding: 12px;
@@ -88,7 +88,7 @@ input {
     margin-bottom: 15px;
 }
 
-/* Responsive kecil */
+/* RESPONSIVE */
 @media (max-width: 480px) {
     h2 {
         font-size: 20px;
@@ -115,7 +115,7 @@ input {
 </div>
 
 <script>
-/* ===== CLASS USER ===== */
+/* ===== CLASS USER (PBO) ===== */
 class User {
     constructor(username, password) {
         this.username = username;
@@ -126,19 +126,16 @@ class User {
 /* ===== CLASS LOGIN APP ===== */
 class LoginApp {
     constructor() {
-        this.users = [];
-        this.loadUsers();
+        this.resetUsers(); // PAKSA DATA BENAR (AMAN DEMO)
     }
 
-    loadUsers() {
-        if (!localStorage.getItem("users")) {
-            const data = [
-                new User("admin", "123456"),
-                new User("user", "password")
-            ];
-            localStorage.setItem("users", JSON.stringify(data));
-        }
-        this.users = JSON.parse(localStorage.getItem("users"));
+    resetUsers() {
+        const data = [
+            new User("admin", "123456"),
+            new User("user", "password")
+        ];
+        localStorage.setItem("users", JSON.stringify(data));
+        this.users = data;
     }
 
     login() {
