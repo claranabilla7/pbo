@@ -1,67 +1,74 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Login PBO - UAS</title>
+<meta charset="UTF-8">
+<title>Login PBO UAS</title>
 
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #4e54c8, #8f94fb);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+<style>
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
 
-        .card {
-            background: white;
-            width: 320px;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            text-align: center;
-        }
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(120deg, #1d2671, #c33764);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
+/* Card Glass Effect */
+.card {
+    width: 330px;
+    padding: 25px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    color: white;
+    text-align: center;
+}
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 12px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+h2 {
+    margin-bottom: 20px;
+}
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #4e54c8;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 15px;
-            cursor: pointer;
-        }
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
 
-        button:hover {
-            background: #3b40a4;
-        }
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #ff9800;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
 
-        .info {
-            font-size: 14px;
-            color: #555;
-            margin-top: 10px;
-        }
-    </style>
+button:hover {
+    background: #e68900;
+}
+
+.info {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+</style>
 </head>
+
 <body>
 
-<!-- ===== HALAMAN LOGIN ===== -->
+<!-- ===== LOGIN ===== -->
 <div class="card" id="loginBox">
     <h2>Login User</h2>
     <input type="text" id="username" placeholder="Username">
@@ -69,15 +76,15 @@
     <button onclick="app.login()">Login</button>
 </div>
 
-<!-- ===== HALAMAN USER ===== -->
+<!-- ===== USER PAGE ===== -->
 <div class="card" id="userBox" style="display:none;">
-    <h2>Berhasil Login</h2>
+    <h2>Login Berhasil</h2>
     <p class="info" id="userInfo"></p>
     <button onclick="app.logout()">Logout</button>
 </div>
 
 <script>
-/* ===== CLASS USER (OOP) ===== */
+/* ===== CLASS USER ===== */
 class User {
     constructor(username, password) {
         this.username = username;
@@ -85,20 +92,20 @@ class User {
     }
 }
 
-/* ===== CLASS LOGIN APPLICATION ===== */
+/* ===== CLASS LOGIN APP ===== */
 class LoginApp {
     constructor() {
         this.users = [];
-        this.initData();
+        this.loadUsers();
     }
 
-    initData() {
+    loadUsers() {
         if (!localStorage.getItem("users")) {
-            const dataset = [
+            const data = [
                 new User("admin", "12345"),
                 new User("user", "password")
             ];
-            localStorage.setItem("users", JSON.stringify(dataset));
+            localStorage.setItem("users", JSON.stringify(data));
         }
         this.users = JSON.parse(localStorage.getItem("users"));
     }
@@ -107,12 +114,12 @@ class LoginApp {
         const uname = document.getElementById("username").value;
         const pass = document.getElementById("password").value;
 
-        const validUser = this.users.find(
+        const found = this.users.find(
             u => u.username === uname && u.password === pass
         );
 
-        if (validUser) {
-            this.showUser(validUser);
+        if (found) {
+            this.showUser(found);
         } else {
             alert("Salah login");
         }
@@ -133,7 +140,7 @@ class LoginApp {
     }
 }
 
-/* ===== OBJECT DARI CLASS ===== */
+/* ===== OBJECT ===== */
 const app = new LoginApp();
 </script>
 
