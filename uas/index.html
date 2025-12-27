@@ -133,7 +133,7 @@ class LoginApp {
     loadUsers() {
         if (!localStorage.getItem("users")) {
             const data = [
-                new User("admin", "12345"),
+                new User("admin", "123456"),
                 new User("user", "password")
             ];
             localStorage.setItem("users", JSON.stringify(data));
