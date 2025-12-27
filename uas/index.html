@@ -1,1 +1,141 @@
-clara nabilla yasin
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Login PBO - UAS</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            width: 320px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4e54c8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #3b40a4;
+        }
+
+        .info {
+            font-size: 14px;
+            color: #555;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HALAMAN LOGIN ===== -->
+<div class="card" id="loginBox">
+    <h2>Login User</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="app.login()">Login</button>
+</div>
+
+<!-- ===== HALAMAN USER ===== -->
+<div class="card" id="userBox" style="display:none;">
+    <h2>Berhasil Login</h2>
+    <p class="info" id="userInfo"></p>
+    <button onclick="app.logout()">Logout</button>
+</div>
+
+<script>
+/* ===== CLASS USER (OOP) ===== */
+class User {
+    constructor(username, password) {
+        this.username = username;
+        this.password = password;
+    }
+}
+
+/* ===== CLASS LOGIN APPLICATION ===== */
+class LoginApp {
+    constructor() {
+        this.users = [];
+        this.initData();
+    }
+
+    initData() {
+        if (!localStorage.getItem("users")) {
+            const dataset = [
+                new User("admin", "12345"),
+                new User("user", "password")
+            ];
+            localStorage.setItem("users", JSON.stringify(dataset));
+        }
+        this.users = JSON.parse(localStorage.getItem("users"));
+    }
+
+    login() {
+        const uname = document.getElementById("username").value;
+        const pass = document.getElementById("password").value;
+
+        const validUser = this.users.find(
+            u => u.username === uname && u.password === pass
+        );
+
+        if (validUser) {
+            this.showUser(validUser);
+        } else {
+            alert("Salah login");
+        }
+    }
+
+    showUser(user) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("userBox").style.display = "block";
+        document.getElementById("userInfo").innerText =
+            "Selamat datang, " + user.username;
+    }
+
+    logout() {
+        document.getElementById("loginBox").style.display = "block";
+        document.getElementById("userBox").style.display = "none";
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+    }
+}
+
+/* ===== OBJECT DARI CLASS ===== */
+const app = new LoginApp();
+</script>
+
+</body>
+</html>
